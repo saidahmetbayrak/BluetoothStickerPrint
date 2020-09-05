@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BluetoothStickerPrint.Pages;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -10,7 +11,7 @@ namespace BluetoothStickerPrint
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new PagePrint();
         }
 
         protected override void OnStart()
