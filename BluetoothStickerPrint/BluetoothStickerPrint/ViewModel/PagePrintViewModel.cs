@@ -2,15 +2,22 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Drawing;
+using System.IO;
 using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
+using ZXing;
+using ZXing.Common;
+using Image = Xamarin.Forms.Image;
 
 namespace BluetoothStickerPrint.ViewModel
 {
    public class PagePrintViewModel
     {
         private readonly IBlueToothService _blueToothService;
+
+        
 
         private IList<string> _deviceList;
         public IList<string> DeviceList
@@ -54,16 +61,16 @@ namespace BluetoothStickerPrint.ViewModel
             }
         }
 
-        private string _printStokno;
-        public string PrintStokno
+        private string _printFileNo;
+        public string PrintFileNo
         {
             get
             {
-                return _printStokno;
+                return _printFileNo;
             }
             set
             {
-                _printStokno = value;
+                _printFileNo = value;
             }
         }
 
@@ -85,7 +92,7 @@ namespace BluetoothStickerPrint.ViewModel
         {
             get
             {
-                return _printQuantity;
+                return  _printQuantity;
             }
             set
             {
@@ -98,7 +105,6 @@ namespace BluetoothStickerPrint.ViewModel
         {
             get
             {
-
                 return _printBarcode;
             }
             set
@@ -106,7 +112,7 @@ namespace BluetoothStickerPrint.ViewModel
                 _printBarcode = value;
             }
         }
-
+  
 
         private string _selectedDevice;
         public string SelectedDevice
@@ -121,10 +127,10 @@ namespace BluetoothStickerPrint.ViewModel
             }
         }
 
-
         public ICommand PrintCommand => new Command(async () =>
         {
-            string printPage = PrintCustomerNo + " \n " + PrintCustomerName + " \n " + PrintStokno + " \n " + PrintProductNo + " \n " + PrintQuantity + " \n ";
+
+            string printPage = PrintCustomerNo + "\n" + PrintCustomerName + "\n" + PrintFileNo + "\n" + PrintProductNo + "\t\t Miktar :" + PrintQuantity + "\n"  + "\t" + PrintBarcode + "\n\n\n" ;
 
             if (printPage.Length > 0)
             {
@@ -138,7 +144,7 @@ namespace BluetoothStickerPrint.ViewModel
 
         public PagePrintViewModel()
         {
-            _blueToothService = DependencyService.Get<IBlueToothService>();
+             _blueToothService = DependencyService.Get<IBlueToothService>();
             BindDeviceList();
         }
 
@@ -149,6 +155,13 @@ namespace BluetoothStickerPrint.ViewModel
             foreach (var item in list)
                 DeviceList.Add(item);
         }
+
+        //void GenerateBarcode()
+        //{
+        //    var stream = _blueToothService.GenerateQrImage(PrintBarcode, 250, 125);
+        //    Stream strm = new MemoryStream(stream);
+        //    PrintImage.Source = ImageSource.FromStream(() => strm);
+        //}
     }
 }
 

@@ -5,7 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.TizenSpecific;
 using Xamarin.Forms.Xaml;
+using Image = Xamarin.Forms.Image;
 
 namespace BluetoothStickerPrint.Pages
 {
@@ -15,6 +17,9 @@ namespace BluetoothStickerPrint.Pages
         public PagePrint()
         {
             InitializeComponent();
+            
         }
+
+        
     }
 }

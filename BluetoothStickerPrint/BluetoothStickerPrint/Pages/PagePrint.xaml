@@ -10,23 +10,22 @@
     <ContentPage.Content>
         <StackLayout>
             <Picker ItemsSource="{Binding DeviceList}"
-                    Title="Select Device"
+                    Title="Yazıcı Şeçimi"
                     ItemDisplayBinding="{Binding .}"
                     SelectedItem="{Binding SelectedDevice}"></Picker>
             <Entry Text="{Binding PrintCustomerNo}"
                    Placeholder="Müşteri No Giriniz"></Entry>
             <Entry Text="{Binding PrintCustomerName}"
                    Placeholder="Müşteri Adı Giriniz"></Entry>
-            <Entry Text="{Binding PrintStokno}"
-                   Placeholder="Stok No Giriniz"></Entry>
+            <Entry Text="{Binding PrintFileNo}"
+                   Placeholder="Belge No Giriniz"></Entry>
             <Entry Text="{Binding PrintProductNo}"
-                   Placeholder="Ürün No Giriniz"></Entry>
+                   Placeholder="Malzeme Giriniz"></Entry>
             <Entry Text="{Binding PrintQuantity}"
-                   Placeholder="Miktar Adeti Giriniz"></Entry>
+                   Placeholder="Miktar Adeti Giriniz" Keyboard="Numeric"></Entry>
             <Entry Text="{Binding PrintBarcode}"
                    Placeholder="Barkod Giriniz"></Entry>
-            <Image BindingContext="ImageBarcode"></Image>
-            <Button Text="Print"
+            <Button Text="YAZDIR"
                     Command="{Binding PrintCommand}"></Button>
         </StackLayout>
     </ContentPage.Content>

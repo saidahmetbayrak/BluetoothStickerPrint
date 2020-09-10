@@ -10,5 +10,7 @@ namespace BluetoothStickerPrint.DependecyServices
         IList<string> GetDeviceList();
 
         Task Print(string deviceName, string text);
+
+        //byte[] GenerateQrImage(string content, int width, int height);
     }
 }
