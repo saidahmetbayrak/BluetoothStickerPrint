@@ -129,8 +129,37 @@ namespace BluetoothStickerPrint.ViewModel
 
         public ICommand PrintCommand => new Command(async () =>
         {
+            string printPage = @"\n\n\n\n
+                                ^XA
+                               ^MMT
+                               ^PW775
+                               ^LL0615
+                               ^LS0
+                                ^CFA,35
+                                 ^FO50,100 ^FDMUSTERINO^FS
+                                  ^CFA,30
+                                   ^FO50,180 ^FDMUSTERIADI ^FS
 
-            string printPage = PrintCustomerNo + "\n" + PrintCustomerName + "\n" + PrintFileNo + "\n" + PrintProductNo + "\t\t Miktar :" + PrintQuantity + "\n"  + "\t" + PrintBarcode + "\n\n\n" ;
+                                    ^FO20,240 ^GB710,1,3 ^FS
+
+                                       ^CFA,40
+                                        ^FO100,270 ^FDBELGENO^FS
+                                         ^CFA,55
+                                          ^FO100,340 ^FDMALZEMENO ^FS
+                                           ^FO100,440 ^FDMIKTAR: ADET ^FS
+
+                                              ^BY3,2,150
+                                               ^FO80,550 ^BC ^FDSEPET ^FS
+                                                    ^CFA,55
+                                                    ^XZ
+                                                    \n\n\n";
+
+            printPage = printPage.Replace("MUSTERINO", PrintCustomerNo);
+            printPage = printPage.Replace("MUSTERIADI", PrintCustomerName);
+            printPage = printPage.Replace("BELGENO", PrintFileNo);
+            printPage = printPage.Replace("MALZEMENO", PrintProductNo);
+            printPage = printPage.Replace("MIKTAR", PrintQuantity);
+            printPage = printPage.Replace("SEPET", PrintBarcode);
 
             if (printPage.Length > 0)
             {
@@ -156,12 +185,6 @@ namespace BluetoothStickerPrint.ViewModel
                 DeviceList.Add(item);
         }
 
-        //void GenerateBarcode()
-        //{
-        //    var stream = _blueToothService.GenerateQrImage(PrintBarcode, 250, 125);
-        //    Stream strm = new MemoryStream(stream);
-        //    PrintImage.Source = ImageSource.FromStream(() => strm);
-        //}
     }
 }
 

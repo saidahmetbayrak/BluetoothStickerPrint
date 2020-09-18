@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BluetoothStickerPrint.SepetTasma"
+             x:Name="pageSepet">
+    
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="0"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="0"/>
+            </Grid.ColumnDefinitions>
+
+            <StackLayout x:Name="stackHeader" Orientation="Vertical" Grid.Row="0" Grid.Column="0" Spacing="0">
+
+                <StackLayout Orientation="Vertical" HorizontalOptions="Center" 
+                             IsVisible="{Binding Source={x:Reference pageSepet},Path=IsBusy}">
+                    <ActivityIndicator Color="Black" x:Name="activity" IsRunning="{Binding Source={x:Reference pageSepet},Path=IsBusy}"
+                        VerticalOptions="Center" HorizontalOptions="Center" />
+                    <Label Text="Lütfen Bekleyin.." TextColor="Silver" HorizontalOptions="Center" VerticalOptions="Center"></Label>
+                </StackLayout>
+
+
+                <StackLayout x:Name="stackHeader1" Orientation="Horizontal" Margin="10,5,10,0">
+
+                    <Label Text="Öncelik :" VerticalOptions="Center" WidthRequest="70" HorizontalOptions="Start"></Label>
+                    <Picker x:Name="cmbParti" TextColor="Black" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Title="Öncelik Seçiniz" HeightRequest="40"  FontSize="Medium"  />
+
+                </StackLayout>
+
+                <StackLayout x:Name="stackHeader2" Orientation="Horizontal" Margin="10,5,10,0">
+
+                    <Label Text="Malzeme :" VerticalOptions="Center" WidthRequest="70" HorizontalOptions="Start"></Label>
+                    <Entry Text=""  x:Name="lblMalzeme"  HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" FontSize="Medium" Keyboard="Text"/>
+
+                </StackLayout>
+
+                <StackLayout x:Name="stackHeader3" Orientation="Horizontal" Margin="10,5,10,0">
+
+                    <Label Text="Belge :" VerticalOptions="Center" WidthRequest="70" HorizontalOptions="Start"></Label>
+                    <Entry Text="" x:Name="lblBelge"  WidthRequest="150" FontSize="Medium"  HorizontalOptions="FillAndExpand" IsReadOnly="True"/>
+
+                    <Label Text="Adet :" VerticalOptions="Center" WidthRequest="40" HorizontalOptions="Start"></Label>
+                    <Entry Text="" x:Name="lblAdet"  FontSize="Medium"  HorizontalOptions="FillAndExpand" IsReadOnly="True"/>
+
+                </StackLayout>
+
+            </StackLayout>
+
+            <StackLayout x:Name="stackFooter" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" Orientation="Vertical" Margin="10,5,10,0">
+
+
+                <StackLayout x:Name="stackFooter1" Orientation="Horizontal" Margin="10,5,10,0">
+
+                    <Label Text="Önerilen :" VerticalOptions="Center" WidthRequest="70" HorizontalOptions="Start"></Label>
+                    <Entry Text="" x:Name="lblOnerilen"  HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" FontSize="Medium" IsReadOnly="True"/>
+
+                </StackLayout>
+
+
+
+                <StackLayout x:Name="stackFooter2" Orientation="Horizontal" Margin="10,5,10,0">
+
+                    <Label Text="Hedef Raf :" VerticalOptions="Center" WidthRequest="70" HorizontalOptions="Start"></Label>
+                    <Entry Text=""  x:Name="lblAciklama"  HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" FontSize="Medium" Keyboard="Text"/>
+
+                </StackLayout>
+
+                <StackLayout x:Name="stackFooter3" Orientation="Horizontal" Margin="10,5,10,0" VerticalOptions="FillAndExpand">
+
+                    <CheckBox x:Name="chkSepet" Color="Red" ></CheckBox>
+
+                    <Label Text="Sepete Sığmıyor" TextColor="Black" FontSize="Large" HorizontalOptions="StartAndExpand" HeightRequest="40" VerticalTextAlignment="Center"/>
+                    <Button x:Name="btnTamam" HorizontalOptions="Center" HeightRequest="40" Text="Tamam" BackgroundColor="#349e57" TextColor="WhiteSmoke" BorderRadius ="10" BorderWidth="1" BorderColor="Black" />
+
+                </StackLayout>
+
+                <StackLayout x:Name="stackFooter4" Orientation="Horizontal" VerticalOptions="FillAndExpand" Margin="10,5,10,0">
+
+                    <Label Text="Kaynak :" VerticalOptions="Center" WidthRequest="70" HorizontalOptions="Start"></Label>
+                    <Entry Text="" x:Name="lblKaynak" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" FontSize="Medium" IsReadOnly="True"/>
+
+                </StackLayout>
+
+            </StackLayout>
+
+
+        </Grid>
+
+    </ContentPage.Content>
+</ContentPage>

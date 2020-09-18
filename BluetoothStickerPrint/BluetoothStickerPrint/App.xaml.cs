@@ -11,7 +11,7 @@ namespace BluetoothStickerPrint
         {
             InitializeComponent();
 
-            MainPage = new PagePrint();
+            MainPage = new SepetTasma();
         }
 
         protected override void OnStart()
