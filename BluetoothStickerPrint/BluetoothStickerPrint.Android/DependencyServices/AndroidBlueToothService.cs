@@ -1,17 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Android.Bluetooth;
-using Android.Graphics;
 using BluetoothStickerPrint.DependecyServices;
 using BluetoothStickerPrint.Droid.DependencyServices;
 using Java.Util;
 using Xamarin.Forms;
-using ZXing;
-using ZXing.QrCode;
 
 [assembly: Xamarin.Forms.Dependency(typeof(AndroidBlueToothService))]
 namespace BluetoothStickerPrint.Droid.DependencyServices
@@ -61,37 +57,6 @@ namespace BluetoothStickerPrint.Droid.DependencyServices
             }
         }
 
-        #region BarcodePrint
-        //public byte[] GenerateQrImage(string content, int width, int height)
-        //{
-        //    var options = new QrCodeEncodingOptions
-        //    {
-        //        Height = height,
-        //        Width = width,
-        //        Margin = 0,
-        //        PureBarcode = true
-        //    };
-
-        //    var writer = new BarcodeWriter
-        //    {
-        //        Format = BarcodeFormat.CODE_128,
-        //        Options = options
-        //    };
-
-
-        //    var bitmap = writer.Write(content);
-        //    if (bitmap != null)
-        //    {
-
-        //        using (var stream = new MemoryStream())
-        //        {
-        //            bitmap.Compress(Bitmap.CompressFormat.Png, 100, stream);
-        //            return stream.ToArray();
-        //        }
-        //    }
-
-        //    return null;
-        //}
-        #endregion
+        
     }
 }

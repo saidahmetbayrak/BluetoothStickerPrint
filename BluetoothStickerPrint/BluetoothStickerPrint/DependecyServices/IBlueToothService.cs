@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace BluetoothStickerPrint.DependecyServices
 {
    public interface IBlueToothService
@@ -10,7 +11,5 @@ namespace BluetoothStickerPrint.DependecyServices
         IList<string> GetDeviceList();
 
         Task Print(string deviceName, string text);
-
-        //byte[] GenerateQrImage(string content, int width, int height);
     }
 }

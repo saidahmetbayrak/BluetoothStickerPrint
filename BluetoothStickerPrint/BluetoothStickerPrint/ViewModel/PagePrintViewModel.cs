@@ -1,19 +1,15 @@
 ﻿using BluetoothStickerPrint.DependecyServices;
-using System;
+using BluetoothStickerPrint.ViewModel;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Drawing;
-using System.IO;
-using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
-using ZXing;
-using ZXing.Common;
-using Image = Xamarin.Forms.Image;
 
+
+[assembly: Xamarin.Forms.Dependency(typeof(PagePrintViewModel))]
 namespace BluetoothStickerPrint.ViewModel
 {
-   public class PagePrintViewModel
+    public class PagePrintViewModel
     {
         private readonly IBlueToothService _blueToothService;
 
