@@ -31,16 +31,16 @@ namespace BluetoothStickerPrint.ViewModel
             }
         }
 
-        private string _printCustomerNo;
-        public string PrintCustomerNo
+        private string _printZPLFormmat;
+        public string PrintZPLFormmat
         {
             get
             {
-                return _printCustomerNo;
+                return _printZPLFormmat;
             }
             set
             {
-                _printCustomerNo = value;
+                _printZPLFormmat = value;
             }
         }
 
@@ -125,41 +125,50 @@ namespace BluetoothStickerPrint.ViewModel
 
         public ICommand PrintCommand => new Command(async () =>
         {
-            string printPage = @"\n\n\n\n
+            string printPage = @"
                                 ^XA
-                               ^MMT
-                               ^PW775
-                               ^LL0615
-                               ^LS0
+                                ^LT
+                                ^MMT
+                                ^PW775
+                                ^LL0615
+                                ^LS0
+                                ^CI28
+                                
+                                ^CFA,30
+                                ^FO30,20^FDMUSTERINO^FS
+                                ^CFA,30
+                                ^FO30,70^FDMUSTERIADI^FS
+                            ^CFA,30
+                                ^FO30,110^FDADRES^FS
+                                ^FO20,150^GB500,1,3^FS
+                                ^CFA,25
+                                ^FO30,170^FDBELGENO /^FS
+                                ^FO270,170^FDMIKTAR: ADET^FS
                                 ^CFA,35
-                                 ^FO50,100 ^FDMUSTERINO^FS
-                                  ^CFA,30
-                                   ^FO50,180 ^FDMUSTERIADI ^FS
+                                ^FO30,210^FDMALZEMENO^FS
+                                ^BY3,2,100
+                                ^FO70,250^BC^FDSEPET^FS
+                                ^XZ
+                                    ";
+            //string printPage = PrintZPLFormmat;
 
-                                    ^FO20,240 ^GB710,1,3 ^FS
-
-                                       ^CFA,40
-                                        ^FO100,270 ^FDBELGENO^FS
-                                         ^CFA,55
-                                          ^FO100,340 ^FDMALZEMENO ^FS
-                                           ^FO100,440 ^FDMIKTAR: ADET ^FS
-
-                                              ^BY3,2,150
-                                               ^FO80,550 ^BC ^FDSEPET ^FS
-                                                    ^CFA,55
-                                                    ^XZ
-                                                    \n\n\n";
-
-            printPage = printPage.Replace("MUSTERINO", PrintCustomerNo);
-            printPage = printPage.Replace("MUSTERIADI", PrintCustomerName);
-            printPage = printPage.Replace("BELGENO", PrintFileNo);
-            printPage = printPage.Replace("MALZEMENO", PrintProductNo);
-            printPage = printPage.Replace("MIKTAR", PrintQuantity);
-            printPage = printPage.Replace("SEPET", PrintBarcode);
+            //printPage = printPage.Replace("MUSTERINO", PrintCustomerNo);
+            //printPage = printPage.Replace("MUSTERIADI", PrintCustomerName);
+            //printPage = printPage.Replace("BELGENO", PrintFileNo);
+            //printPage = printPage.Replace("MALZEMENO", PrintProductNo);
+            //printPage = printPage.Replace("MIKTAR", PrintQuantity);
+            //printPage = printPage.Replace("SEPET", PrintBarcode);
 
             if (printPage.Length > 0)
             {
-                await _blueToothService.Print(SelectedDevice, printPage);
+            //    string result = await Application.Current.MainPage.DisplayPromptAsync("Barkod Yazdırma", "Adet sayısı giriniz","Tamam",maxLength:2,keyboard:Keyboard.Numeric,initialValue:"1");
+            //    int adet = int.Parse(result);
+            //    for (int i = 0; i < adet; i++)
+            //    {
+                    await _blueToothService.Print(SelectedDevice, printPage);
+               // }
+
+                
             }
             else
             {

@@ -8,23 +8,16 @@
     </ContentPage.BindingContext>
 
     <ContentPage.Content>
+        
         <StackLayout>
             <Picker ItemsSource="{Binding DeviceList}"
                     Title="Yazıcı Şeçimi"
                     ItemDisplayBinding="{Binding .}"
                     SelectedItem="{Binding SelectedDevice}"></Picker>
-            <Entry Text="{Binding PrintCustomerNo}"
-                   Placeholder="Müşteri No Giriniz"></Entry>
-            <Entry Text="{Binding PrintCustomerName}"
-                   Placeholder="Müşteri Adı Giriniz"></Entry>
-            <Entry Text="{Binding PrintFileNo}"
-                   Placeholder="Belge No Giriniz"></Entry>
-            <Entry Text="{Binding PrintProductNo}"
-                   Placeholder="Malzeme Giriniz"></Entry>
-            <Entry Text="{Binding PrintQuantity}"
-                   Placeholder="Miktar Adeti Giriniz" Keyboard="Numeric"></Entry>
-            <Entry Text="{Binding PrintBarcode}"
-                   Placeholder="Barkod Giriniz"></Entry>
+            <Entry Text="{Binding PrintZPLFormmat}"
+                   Placeholder="ZPL Metni Giriniz"
+                   HeightRequest="300"></Entry>
+            
             <Button Text="YAZDIR"
                     Command="{Binding PrintCommand}"></Button>
         </StackLayout>
